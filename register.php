@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Χρήστες</title>
+		<title>Το σχολείο μας</title>
 		<meta charset="utf-8">
 		<meta name = "format-detection" content = "telephone=no" />
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
 		<link rel="icon" href="images/favicon.ico">
 		<link rel="shortcut icon" href="images/favicon.ico" />
-		<link rel="stylesheet" href="css/form.css">
+                <link rel="stylesheet" href="css/form.css">
 		<link rel="stylesheet" href="css/style.css">
                 <link href="css/styleuser.css" rel='stylesheet' type='text/css' />
 		<script src="js/jquery.js"></script>
@@ -20,7 +19,7 @@
 		<script src="js/jquery.equalheights.js"></script>
 		<script src="js/jquery.mobilemenu.js"></script>
 		<script src="js/jquery.easing.1.3.js"></script>
-		<script src="js/TMForm.js"></script>
+                <script src="js/TMForm.js"></script>
                 <script src="js/kwiks.js"></script>
                 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<script>
@@ -68,47 +67,59 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-                </header>            
-</head>
-	<div class="main">
-		<div class="header" >
-			<h1>Συνδεθείτε </h1>
-		</div>
-		<form>
-                    <ul class="left-form-form">
-                    <p>Εισερχόμενοι στο σύστημα μπορείτε να ανεβάζετε ανακοινώσεις και δράσεις του σχολείου</p>
-                    <div class="clear"> </div>
-                    </ul>    
-                    <ul class="right-form">
-                        <h3>Login:</h3>
-                        <div>
-			<li><input type="text"  placeholder="Username" required/></li>
-			<li> <input type="password"  placeholder="Password" required/></li>
-			<h4>Πατηστε Συνδεση για να εισελθετε</h4>
-                        <input type="submit" onclick="myFunction()" value="Σύνδεση" style="text-align:right" >
+		</header>
+		<div class="main">
+<!--==============================Content=================================-->
+			<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
+                            <form action="users/RegisterUser.php" method="post">
+				<ul class="left-form">
+					<h2>Νέος Λογαριασμός:</h2>
+					<li>
+                                            <input type="text"  name="firstname" placeholder="First Name" required/>
+                                            <div class="clear"> </div>
+					</li> 
+                                        <li>
+                                            <input type="text"   name="lastname" placeholder="Last Name" required/>
+                                            <div class="clear"> </div>
+					</li> 
+                                        <li>
+                                            <input type="text"   name="username" placeholder="Username" required/>
+                                            <div class="clear"> </div>
+					</li> 
+					<li>
+                                            <input type="password"  name="password"   placeholder="password" required/>
+                                            <div class="clear"> </div>
+					</li> 
+					<li>
+                                            <input type="password" name="cpassword"   placeholder="confirm password" required/>
+                                            <div class="clear"> </div>
+					</li> 
+                                        <li>
+                                            <input type="submit" name="registration" value="Εγγραφη Χρηστη" style="text-align:right" >
+                                            <div class="clear"> </div>
+                                        </li>        
+				</ul>
+				<div class="clear"> </div>
+			</form>
 			</div>
-                        <div class="clear"> </div>
-                    </ul>
-                    <div class="clear"> </div>
-		</form>
-	</div>
 <!--==============================footer=================================-->
-	<footer>
-            <div class="hor bg3"></div>
-		<div class="container_12">
-                    <div class="grid_12 ">
-			<div class="socials">
-                            <a href="admin.php"></a>
-                                <a href="#"></a>
-				<a href="#"></a>
-                            <div class="clear"></div>
-			</div>
-                        <div class="copy">
-                            <strong>Δημοτικό Σχολείο Σκουτάρεως</strong>   &copy; <span id="copyright-year"></span> | <a href="#">Privacy Policy</a><br>
-                            Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας Τμήμα ΜηχανικώνΠληροφορικής</a>
-                        </div>
-                    </div>
+			<footer>	
+				<div class="hor bg3"></div>
+				<div class="container_12">
+					<div class="grid_12 ">  
+						<div class="socials">
+							<a href="#"></a>
+							<a href="#"></a>
+							<a href="#"></a>
+							<div class="clear"></div>
+						</div>
+						<div class="copy">
+							<strong>Δημοτικό Σχολείο Σκουτάρεως</strong>   &copy; <span id="copyright-year"></span> | <a href="#">Privacy Policy</a><br>
+							Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας Τμήμα ΜηχανικώνΠληροφορικής</a>
+						</div>  
+					</div>
+				</div>  
+			</footer>
 		</div>
-	</footer>
-</body>
+	</body>
 </html>

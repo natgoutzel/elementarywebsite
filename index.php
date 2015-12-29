@@ -150,10 +150,7 @@
 					<div class="clear"></div>
 					
 					<div class="grid_12">
-						<h2><font color="FF0066">μ</font> <font color="FF9900">ε</font> <font color="9933CC">γ</font>
-                                                        <font color="33FFFF">α</font> <font color="CC0000">λ</font> <font color="000066">α</font> &nbsp;
-                                                <font color="660066">λ</font> <font color="663333">ο</font> <font color="006600">γ</font>
-                                                <font color="FF0066">ι</font> <font color="FF9900">α</font> </h2> 
+						<h2><font color="#008000">μεγαλα λογια</font> </h2> 
 						<div id="owl">
 							
 							<div class="item it1">
@@ -177,12 +174,9 @@
 					</div>
                                         <div class="container_12">
                                             <div class="grid_8">
-                                               <h3> <b> <u>
-                                                    <font color="FF0066">Α</font> <font color="FF9900">ν</font> <font color="9933CC">α</font>
-                                                    <font color="33FFFF">κ</font> <font color="CC0000">ο</font> <font color="000066">ι</font>
-                                                    <font color="660066">ν</font> <font color="663333">ω</font> <font color="006600">σ</font>
-                                                    <font color="FF0066">ε</font> <font color="003300">ι</font> <font color="0000FF">ς</font>
-                                                </u></b></h3>
+                                                <h3>
+                                                    <font color="#008000">ανακοινωσεις</font>
+                                                </h3>
 						
 						<div class="extra_wrapper">
                                                     
@@ -195,10 +189,9 @@
                                             </div>
                                             <div class="grid_4 ">
 						
-                                                <h3> <b><u> <font color="FF0066">σ</font> <font color="FF9900">υ</font> <font color="9933CC">ν</font>
-                                                <font color="33FFFF">δ</font> <font color="CC0000">ε</font> <font color="000066">σ</font>
-                                                <font color="660066">μ</font> <font color="663333">ο</font> <font color="006600">ι</font> 
-                                                </u></b></h3>  
+                                                <h3> 
+                                                <font color="#008000">συνδεσμοι</font> 
+                                                </h3>  
 						<ul class="list">
 							<li><a href="http://www.minedu.gov.gr/">υπουργειο παιδειας</a></li>
 							<li><a href="http://kmaked.pde.sch.gr/site/index.php/paratiritirio-bias/paratiritirio-bias-3">παρατηρητηριο βιας κεντρικης μακεδονιας</a></li>
@@ -211,18 +204,14 @@
                                         
 					<div class="grid_4">
 						<h3 class="nowrap mb0">
-                                                <font color="FF0066">χ</font> <font color="FF9900">ρ</font> <font color="9933CC">η</font>
-                                                <font color="33FFFF">σ</font> <font color="CC0000">τ</font> <font color="000066">ε</font> <font color="660066">ς</font>
+                                                <font color="#008000">χρηστες</font> 
                                                 </h3>
 						Πατήστε παρακάτω για να συνδεθείτε
                                                 <div class="alright"><a href="users.php" class="btn">συνδεση</a></div>
 					</div>
 					<div class="grid_7 prefix_1">
                                             <h3>
-                                                <font color="FF0066">ε</font> <font color="FF9900">π</font> <font color="9933CC">ι</font>
-                                                <font color="33FFFF">κ</font> <font color="CC0000">ο</font> <font color="000066">ι</font>
-                                                <font color="660066">ν</font> <font color="663333">ω</font> <font color="006600">ν</font>
-                                                <font color="FF0066">ι</font> <font color="003300">α</font> 
+                                                <font color="#008000">επικοινωνια</font> 
                                             </h3>
 						<img src="images/page1_img8.jpg" alt="" class="img_inner fleft">
 						<div class="extra_wrapper">

@@ -39,7 +39,7 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h1>
-						<a href="index.html">
+                                            <a href="index.php">
 							<img src="images/logo.png" alt="Your Happy Family">
 						</a>
 					</h1>

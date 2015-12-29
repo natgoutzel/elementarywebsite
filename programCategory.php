@@ -1,17 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Χρήστες</title>
+		<title>ΔΙΑΧΕΙΡΙΣΗ ΠΡΟΣΩΠΙΚΟΥ</title>
 		<meta charset="utf-8">
 		<meta name = "format-detection" content = "telephone=no" />
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
 		<link rel="icon" href="images/favicon.ico">
 		<link rel="shortcut icon" href="images/favicon.ico" />
-		<link rel="stylesheet" href="css/form.css">
 		<link rel="stylesheet" href="css/style.css">
-                <link href="css/styleuser.css" rel='stylesheet' type='text/css' />
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-migrate-1.1.1.js"></script>
 		<script src="js/script.js"></script> 
@@ -20,9 +15,6 @@
 		<script src="js/jquery.equalheights.js"></script>
 		<script src="js/jquery.mobilemenu.js"></script>
 		<script src="js/jquery.easing.1.3.js"></script>
-		<script src="js/TMForm.js"></script>
-                <script src="js/kwiks.js"></script>
-                <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<script>
 			$(document).ready(function(){
 				$().UItoTop({ easingType: 'easeOutQuart' });
@@ -47,7 +39,7 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h1>
-                                            <a href="index.php">
+						<a href="index.php">
 							<img src="images/logo.png" alt="Your Happy Family">
 						</a>
 					</h1>
@@ -68,47 +60,69 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-                </header>            
-</head>
-	<div class="main">
-		<div class="header" >
-			<h1>Συνδεθείτε </h1>
-		</div>
-		<form>
-                    <ul class="left-form-form">
-                    <p>Εισερχόμενοι στο σύστημα μπορείτε να ανεβάζετε ανακοινώσεις και δράσεις του σχολείου</p>
-                    <div class="clear"> </div>
-                    </ul>    
-                    <ul class="right-form">
-                        <h3>Login:</h3>
-                        <div>
-			<li><input type="text"  placeholder="Username" required/></li>
-			<li> <input type="password"  placeholder="Password" required/></li>
-			<h4>Πατηστε Συνδεση για να εισελθετε</h4>
-                        <input type="submit" onclick="myFunction()" value="Σύνδεση" style="text-align:right" >
-			</div>
-                        <div class="clear"> </div>
-                    </ul>
-                    <div class="clear"> </div>
-		</form>
-	</div>
+		</header>
+
+<!--==============================Content=================================-->
+<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div></div>
+    <?php
+    echo 'Οι κατηγορίες προγραμματων που υπάρχουν είναι οι εξής:';
+    require_once 'helpers/dbConnectioni.php';
+
+    $conn = getDbConnection();
+    $category="SELECT category_title FROM program_category";
+                    
+                    $categoryResult = $conn->query($category);
+                   
+                    if ($categoryResult->num_rows > 0) {
+                        // output data of each row
+                        while($row = $categoryResult->fetch_assoc()) {
+                            echo $row['category_title'];
+                            echo '</br>';
+                             
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+
+
+    ?>
+  
+    <form method="POST">
+    <h4>ΕΙΣΑΓΕΤΕ ΟΝΟΜΑ ΚΑΤΗΓΟΡΙΑΣ</h4>
+    ΟΝΟΜΑ: <input type="text" name="name">
+    <input type="submit" name="insert" value="ΕΙΣΑΓΩΓΗ" />
+    </form>  
+
+<?php
+
+$category_name= mysql_real_escape_string($_POST['name']);
+
+$sql="INSERT INTO program_category (user_id,category_title) VALUES ('1','$category_name')";
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+$conn->close();
+?>
 <!--==============================footer=================================-->
-	<footer>
-            <div class="hor bg3"></div>
-		<div class="container_12">
-                    <div class="grid_12 ">
-			<div class="socials">
-                            <a href="admin.php"></a>
-                                <a href="#"></a>
-				<a href="#"></a>
-                            <div class="clear"></div>
-			</div>
-                        <div class="copy">
-                            <strong>Δημοτικό Σχολείο Σκουτάρεως</strong>   &copy; <span id="copyright-year"></span> | <a href="#">Privacy Policy</a><br>
-                            Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας Τμήμα ΜηχανικώνΠληροφορικής</a>
-                        </div>
-                    </div>
+			<footer>	
+				<div class="hor bg3"></div>
+				<div class="container_12">
+					<div class="grid_12 ">  
+						<div class="socials">
+							<a href="#"></a>
+							<a href="#"></a>
+							<a href="#"></a>
+							<div class="clear"></div>
+						</div>
+						<div class="copy">
+							<strong>Δημοτικό Σχολείο Σκουτάρεως</strong>   &copy; <span id="copyright-year"></span> | <a href="#">Privacy Policy</a><br>
+							Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας Τμήμα ΜηχανικώνΠληροφορικής</a>
+						</div>  
+					</div>
+				</div>  
+			</footer>
 		</div>
-	</footer>
-</body>
+	</body>
 </html>

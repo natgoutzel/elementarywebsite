@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Campaigns</title>
+		<title>ΠΡΟΣΩΠΙΚΟ</title>
 		<meta charset="utf-8">
 		<meta name = "format-detection" content = "telephone=no" />
 		<link rel="icon" href="images/favicon.ico">
@@ -61,36 +61,38 @@
 				</div>
 			</div>
 		</header>
-		<div class="main">
+<div class="main">
 <!--==============================Content=================================-->
-			<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
-				<div class="container_12">
-					<div class="grid_4">
-					
-						<h3 class="head1">Το διδακτικο προσωπικό του σχολείου μας</h3>
-						<div class="bl1">
-							<div class="blog">
-								<img src="images/page3_img4.jpg" alt="" class="img_inner fleft">
-								<div class="extra_wrapper">
-									<div class="title"><a href="#"> Mark Johnson </a></div>Δασκαλος 
-								</div>
-							</div>
-							<div class="blog">
-								<img src="images/page3_img5.jpg" alt="" class="img_inner fleft">
-								<div class="extra_wrapper">
-									<div class="title"><a href="#"> Ann Parker</a></div>Δασκαλα Αγγλικών
-								</div>
-							</div>
-							<div class="blog">
-								<img src="images/page3_img6.jpg" alt="" class="img_inner fleft">
-								<div class="extra_wrapper">
-									<div class="title"><a href="#"> Emily Willson</a></div>Δασκάλα γυμναστικης
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
+    <div class="container_12">
+	<div class="grid_4">
+            <h3 class="head1">Το διδακτικο προσωπικό του σχολείου μας</h3>
+                <div class="bl1">
+                    <?php
+                    require_once 'helpers/dbConnectioni.php';
+                    $conn = getDbConnection();
+                    
+                    $sql="SELECT staff_firstname,staff_lastname, staff_specialty FROM staff";
+                    
+                    $result = $conn->query($sql);
+                   
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo $row['staff_firstname']."  ". $row['staff_lastname']. " - ". $row['staff_specialty'];
+                            echo '</br>';
+                             
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conn->close();
+
+                    ?>    
+                </div>
+	</div>
+    </div>
+</div>
 <!--==============================footer=================================-->
 			<footer>	
 				<div class="hor bg3"></div>

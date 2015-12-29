@@ -70,12 +70,26 @@
 						<a href="#" class="donate">ωρολογιο προγραμμα</a>
 						<h4>ολες οι ταξεις</h4>
 						<ul class="list">
-							<li><a href="#">ταξη Α</a></li>
-							<li><a href="#">ταξη Β</a></li>
-							<li><a href="#">ταξη Γ</a></li>
-							<li><a href="#">ταξη Δ</a></li>
-							<li><a href="#">ταξη Ε</a></li>
-							<li><a href="#">ταξη ΣΤ</a></li>
+							<?php
+                                                        require_once 'helpers/dbConnectioni.php';
+                                                         $conn = getDbConnection();
+                    
+                                                            $sql="SELECT class,lessonprogram_file FROM lessonprogram";
+                    
+                                                            $result = $conn->query($sql);
+                   
+                                                            if ($result->num_rows > 0) {
+                                                                // output data of each row
+                                                                while($row = $result->fetch_assoc()) {
+                                                                    echo $row['class']."  ". $row['lessonprogram_file'] ;
+                                                                    echo '</br>';
+
+                                                                }
+                                                            } else {
+                                                                echo "0 results";
+                                                            }
+                                                            $conn->close();
+                                                        ?>
 							
 						</ul>
 						
