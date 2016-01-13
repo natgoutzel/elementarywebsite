@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>ΔΙΑΧΕΙΡΙΣΗ ΠΡΟΣΩΠΙΚΟΥ</title>
+        <title>ΔΙΑΓΡΑΦΗ ΚΑΘΗΓΗΤΗ</title>
 	<meta charset="utf-8">
 	<meta name = "format-detection" content = "telephone=no" />
 	<link rel="icon" href="images/favicon.ico">
@@ -56,56 +56,31 @@
     </header>
 
 <!--==============================Content=================================-->
-<div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
-                          
+
 <?php
 require_once 'helpers/dbConnectioni.php';
-                    $conn = getDbConnection();
-                    
-                    $selectsql="SELECT staff_id,staff_firstname,staff_lastname,staff_specialty FROM staff";
-                    
-                    $selectresult = $conn->query($selectsql);
-                    
-                if ($selectresult->num_rows > 0) {
-                    // output data of each row
-                    $table = "<table>%s</table>";
-                    $rowAll = "";
-                    while ($row = $selectresult->fetch_assoc()) {
-                        $rowS = "<tr><td>%s</td> <td>%s</td><td>%s</td>  <td><a href='deleteStaff.php?id=%s'>Διαγραφή</a></td> </tr>";
-                        $rowAll = $rowAll. sprintf($rowS,  $row['staff_firstname'],$row['staff_lastname'],$row['staff_specialty'],   strval($row['staff_id']));
-                    }
-                    echo sprintf($table,$rowAll);
-                }else {
-                    echo "0 results";
-                }
-//                    if ($selectresult->num_rows > 0) {
-//                    // output data of each row
-//                   
-//                    $table = "<table>%s</table>";
-//                    $rowAll = "";
-//                    while ($row = $selectresult->fetch_assoc()) {
-//                     //   $sid= $row['staff_id'];
-//                        $rowS = "<tr><td>%s</td> <td>%s</td> <td>%s</td> <td> <form method='GET' action='deleteStaff.php?id=%s'>"
-//                                . "<input type='submit' name='delete' value='ΔΙΑΓΡΑΦΗ'><form></td> </tr>";
-//                        $rowAll = $rowAll. sprintf($rowS, $row['staff_firstname'],$row['staff_lastname'], $row['staff_specialty'], strval($row['staff_id']));
-//                       // echo "$sid";
-//                        
-//                    }
-//                    echo sprintf( $table,$rowAll);
-//                    }
-//                else {
-//                    echo "0 results";
-//                }
-  $conn->close();
- ?>   
 
-<form method="POST" action='insertStaff.php'>                            
-ΕΠΩΝΥΜΟ: <input type="text" name="fname">
-ΟΝΟΜΑ: <input type="text" name="lname">
-ΕΙΔΙΚΟΤΗΤΑ: <input type="text" name="specialty">
-<input type="submit" name="insert" value="ΕΙΣΑΓΩΓΗ" />
-</form>  
-
+$conn = getDbConnection();
+$insertion = filter_input(INPUT_POST,"insert");
+    if(isset($insertion)){
+    $staff_fname= filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+    $staff_lname= filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+    $staff_specialty= filter_input(INPUT_POST, 'specialty', FILTER_SANITIZE_STRING);
+   
+    $insertsql = "INSERT INTO staff (user_id,staff_firstname,staff_lastname,staff_specialty) VALUES(?,?,?,?)";
+    $insertstm = $conn->prepare($insertsql);
+    $uid=1;
+    $insertstm->bind_param("isss",$uid, $staff_fname, $staff_lname, $staff_specialty);
+    $insertresutl = $insertstm->execute();
+    
+    if ($insertresutl === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    }
+    $conn->close();
+?>
 <!--===============footer=================================-->
 <footer>	
     <div class="hor bg3"></div>
@@ -127,5 +102,4 @@ require_once 'helpers/dbConnectioni.php';
 
 
 </body>
-</html>                                  
-                            
+</html>

@@ -72,10 +72,9 @@
                     $table = "<table>%s</table>";
                     $rowAll = "";
                     while ($row = $timetableResult->fetch_assoc()) {
-                        $rowS = "<tr><td>%s</td><td><a href='edittimetable/%s'>Edit</a></td></tr>";
-                        $rowAll = $rowAll. sprintf($rowS,  $row['class'],  strval($row['lessonprogram_id']));
-                       
-                    }
+                        $rowS = "<tr><td>%s</td>  <td><a href='admin/EditTimetable.php?id=%s'>Διαγραφή</a></td> </tr>";
+                        $rowAll = $rowAll. sprintf($rowS,  $row['class'],   strval($row['lessonprogram_id']));
+    }
                     echo sprintf($table,$rowAll);
                 } else {
                     echo "0 results";

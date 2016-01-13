@@ -39,7 +39,7 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h1>
-						<a href="index.html">
+                                            <a href="index.php">
 							<img src="images/logo.png" alt="Your Happy Family">
 						</a>
 					</h1>
@@ -74,20 +74,22 @@
                                                         require_once 'helpers/dbConnectioni.php';
                                                          $conn = getDbConnection();
                     
-                                                            $sql="SELECT class,lessonprogram_file FROM lessonprogram";
-                    
-                                                            $result = $conn->query($sql);
-                   
-                                                            if ($result->num_rows > 0) {
-                                                                // output data of each row
-                                                                while($row = $result->fetch_assoc()) {
-                                                                    echo $row['class']."  ". $row['lessonprogram_file'] ;
-                                                                    echo '</br>';
+                                                            $sql="SELECT lessonprogram_id,class,lessonprogram_file FROM lessonprogram";
+                                                            $sqlResult = $conn->query($sql);
 
+                                                                if ($sqlResult->num_rows > 0) {
+                                                                    // output data of each row
+                                                                    $table = "<table>%s</table>";
+                                                                    $rowAll = "";
+                                                                    while ($row = $sqlResult->fetch_assoc()) {
+                                                                        $rowS = "<tr><td>%s</td>  <td><a href='programFile.php?id=%s'>Δείτε το πρόγραμμα</a></td> </tr>";
+                                                                        $rowAll = $rowAll. sprintf($rowS,  $row['class'],   strval($row['lessonprogram_id']));
+                                                    }
+                                                                    echo sprintf($table,$rowAll);
+                                                                } else {
+                                                                    echo "0 results";
                                                                 }
-                                                            } else {
-                                                                echo "0 results";
-                                                            }
+                                                                                                                      
                                                             $conn->close();
                                                         ?>
 							

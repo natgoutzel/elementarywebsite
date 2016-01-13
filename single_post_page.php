@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ανακοινώσεις</title>
+    <title>Δράσεις</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
@@ -41,7 +41,7 @@
     <div class="container_12">
         <div class="grid_12">
             <h1>
-                <a href="index.php">
+                <a href="index.html">
                     <img src="images/logo.png" alt="Your Happy Family">
                 </a>
             </h1>
@@ -60,6 +60,7 @@
                 </nav>
                 <div class="clear"></div>
             </div>
+            <div class="clear"></div>
         </div>
     </div>
 </header>
@@ -69,68 +70,54 @@
         <div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
         <div class="container_12">
             <div class="grid_8">
-                <h3>Ανακοινωσεις</h3>
+                <?php
+                require_once 'helpers/dbConnectioni.php';
+                $conn = getDbConnection();
 
-                <div class="extra_wrapper">
-                    <?php
-                    require_once 'helpers/dbConnectioni.php';
-                    $conn = getDbConnection();
+                $id = $_GET['id'];
 
-                    $sql = "SELECT post_title, post_id FROM post where post_type = 1 ORDER BY post_id DESC LIMIT 5";
+                $sql = "SELECT post_title, post_body FROM post where post_id = '$id'";
 
-                    $result = $conn->query($sql);
+                $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo('<p/><h4><a href="single_post_page.php?id='.$row['post_id'].' ">' . $row['post_title'] . '</a></h4></li>');
-                        }
-                    } else {
-                        echo ('<p/><h4>' . "Δεν υπάρχουν ανακοινώσεις" . '</h4></p>');
+
+
+                            echo('<p><h4>' . $row['post_title'] . '</h4></p>');
+                        echo('<p>' . $row['post_title'] . '</p>');
                     }
-                    ?>
-                </div>
-            </div>
-            <div class="grid_4 ">
-                <a href="#" class="donate">Ολες οι ανακοινωσεις</a>
-                <h4>παλιοτερες ανακοινωσεις</h4>
-                <ul class="list">
-                    <li><a href="#">ανακοινωση 4</a></li>
-                    <li><a href="#">ανακοινωση 5</a></li>
-                    <li><a href="#">ανακοινωση 6</a></li>
-                    <li><a href="#">ανακοινωση 7</a></li>
-                    <li><a href="#">ανακοινωση 8</a></li>
-                    <li><a href="#">ανακοινωση 9</a></li>
-                    <li><a href="#">ανακοινωση 10</a></li>
-                    <li><a href="#">ανακοινωση 11</a></li>
-                    <li><a href="#">ανακοινωση 12</a></li>
-                    <li><a href="#">ανακοινωση 13</a></li>
-                    <li><a href="#">ανακοινωση 14</a></li>
-                    <li><a href="#">ανακοινωση 15</a></li>
-                </ul>
+                }
+                else {
+                    echo('<p/><h4><a href="#">' . "Oops! Κάτι πήγε λάθος!" . '</a></h4></p>');
+                }
+                ?>
             </div>
         </div>
     </div>
-    <!--==============================footer=================================-->
-    <footer>
-        <div class="hor bg3"></div>
-        <div class="container_12">
-            <div class="grid_12 ">
-                <div class="socials">
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    <a href="#"></a>
+</div>
+</div>
+<!--==============================footer=================================-->
+<footer>
+    <div class="hor bg3"></div>
+    <div class="container_12">
+        <div class="grid_12 ">
+            <div class="socials">
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
 
-                    <div class="clear"></div>
-                </div>
-                <div class="copy">
-                    <strong>Δημοτικό Σχολείο Σκουτάρεως</strong> &copy; <span id="copyright-year"></span> | <a href="#">Privacy
-                        Policy</a><br>
-                    Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας
-                        Τμήμα ΜηχανικώνΠληροφορικής</a>
-                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="copy">
+                <strong>Δημοτικό Σχολείο Σκουτάρεως</strong> &copy; <span id="copyright-year"></span> | <a href="#">Privacy
+                    Policy</a><br>
+                Website designed by <a href="http://informatics.teicm.gr/" rel="nofollow">ΤΕΙ Κεντρικής Μακεδονίας Τμήμα
+                    ΜηχανικώνΠληροφορικής</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </div>
 </body>
 </html>

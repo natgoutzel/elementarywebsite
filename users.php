@@ -74,7 +74,7 @@
 		<div class="header" >
 			<h1>Συνδεθείτε </h1>
 		</div>
-		<form>
+		<form action="users/LoginUser.php" method="post">
                     <ul class="left-form-form">
                     <p>Εισερχόμενοι στο σύστημα μπορείτε να ανεβάζετε ανακοινώσεις και δράσεις του σχολείου</p>
                     <div class="clear"> </div>
@@ -82,10 +82,10 @@
                     <ul class="right-form">
                         <h3>Login:</h3>
                         <div>
-			<li><input type="text"  placeholder="Username" required/></li>
-			<li> <input type="password"  placeholder="Password" required/></li>
+			<li><input type="text"  name="username "placeholder="Username" required/></li>
+			<li> <input type="password" name="password" placeholder="Password" required/></li>
 			<h4>Πατηστε Συνδεση για να εισελθετε</h4>
-                        <input type="submit" onclick="myFunction()" value="Σύνδεση" style="text-align:right" >
+                        <input type="submit" name="login" value="Σύνδεση" style="text-align:right" >
 			</div>
                         <div class="clear"> </div>
                     </ul>

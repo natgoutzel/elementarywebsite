@@ -75,7 +75,7 @@ if (isset($isPost)) {
     //If we get here store it to database
 
     $passwordHash = password_hash($passwordResult, PASSWORD_BCRYPT, array('cost' => 10));
-    $sql = "INSERT INTO user(username,user_lastname,usr_firstname,status,admin,password) VALUES(?,?,?,?,?,?)";
+    $sql = "INSERT INTO user(username,user_lastname,user_firstname,status,admin,password) VALUES(?,?,?,?,?,?)";
     $stm = $conn->prepare($sql);
 
     $status = 1;
@@ -95,50 +95,4 @@ if (isset($isPost)) {
 
 $conn->close();
 
-
-//if (isset()){
-//    echo "You should  be here";
-//}else{
-//    echo "You should NOT be here";
-//}
-//if (isset($_POST['registration'])) {
-//    $firstname = mysql_real_escape_string($_POST['firstname']);
-//    $lastname = mysql_real_escape_string($_POST['lastname']);
-//    $username = mysql_real_escape_string($_POST['username']);
-//    $password = password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => 10));
-//    $conpassword = password_hash($_POST['confirm password'], PASSWORD_BCRYPT, array('cost' => 10));
-//
-////        //check password
-////        if($password !=$conpassword){
-////            echo 'passwords are not equal';
-////             $conn->close();
-////        }
-////        
-////        //check username
-////        if(isUsernameAvailable==FALSE){
-////            echo 'Username already exists';
-////            $conn->close();
-////        }
-////        
-//
-//    $sql = "INSERT INTO user(username,user_lastname,user_firstname,status,admin,password) VALUES('$username','$lastname','$firstname','1','0','$password')";
-//    if (mysqli_query($conn, $sql)) {
-//        echo "New record created successfully";
-//    } else {
-//        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-//    }
-//}
-//$conn->close();
-//function isUsernameAvailable($username) {
-//
-//$rowCount = "SELECT count(*) FROM user WHERE username='$username'";
-//
-// if($rowCount > 0){
-//        $avail=FALSE;//If there is a  record match in the Database - Not Available
-//    }
-//    else {
-//        $avail=TRUE;    // Username is available 
-//    }
-//    return $avail;
-//}
 ?>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>ΔΙΑΧΕΙΡΙΣΗ ΠΡΟΣΩΠΙΚΟΥ</title>
+        <title>ΑΛΛΑΓΗ ΔΙΑΧΕΙΡΙΣΤΗ</title>
 	<meta charset="utf-8">
 	<meta name = "format-detection" content = "telephone=no" />
 	<link rel="icon" href="images/favicon.ico">
 	<link rel="shortcut icon" href="images/favicon.ico" />
-	<link rel="stylesheet" href="css/style.css">
+	
+        <link rel="stylesheet" href="css/style.css">
+        
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.1.1.js"></script>
 	<script src="js/script.js"></script> 
@@ -54,58 +56,37 @@
 		</div>
             </div>
     </header>
-
+<div class="main">
 <!--==============================Content=================================-->
-<div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
-                          
+<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
+                            
 <?php
 require_once 'helpers/dbConnectioni.php';
-                    $conn = getDbConnection();
-                    
-                    $selectsql="SELECT staff_id,staff_firstname,staff_lastname,staff_specialty FROM staff";
-                    
-                    $selectresult = $conn->query($selectsql);
-                    
-                if ($selectresult->num_rows > 0) {
-                    // output data of each row
-                    $table = "<table>%s</table>";
-                    $rowAll = "";
-                    while ($row = $selectresult->fetch_assoc()) {
-                        $rowS = "<tr><td>%s</td> <td>%s</td><td>%s</td>  <td><a href='deleteStaff.php?id=%s'>Διαγραφή</a></td> </tr>";
-                        $rowAll = $rowAll. sprintf($rowS,  $row['staff_firstname'],$row['staff_lastname'],$row['staff_specialty'],   strval($row['staff_id']));
-                    }
-                    echo sprintf($table,$rowAll);
-                }else {
-                    echo "0 results";
-                }
-//                    if ($selectresult->num_rows > 0) {
-//                    // output data of each row
-//                   
-//                    $table = "<table>%s</table>";
-//                    $rowAll = "";
-//                    while ($row = $selectresult->fetch_assoc()) {
-//                     //   $sid= $row['staff_id'];
-//                        $rowS = "<tr><td>%s</td> <td>%s</td> <td>%s</td> <td> <form method='GET' action='deleteStaff.php?id=%s'>"
-//                                . "<input type='submit' name='delete' value='ΔΙΑΓΡΑΦΗ'><form></td> </tr>";
-//                        $rowAll = $rowAll. sprintf($rowS, $row['staff_firstname'],$row['staff_lastname'], $row['staff_specialty'], strval($row['staff_id']));
-//                       // echo "$sid";
-//                        
-//                    }
-//                    echo sprintf( $table,$rowAll);
-//                    }
-//                else {
-//                    echo "0 results";
-//                }
-  $conn->close();
- ?>   
+echo "<h4> ΑΛΛΑΓΗ ΔΙΑΧΕΙΡΙΣΤΗ </h4>";
+echo "<h5>Αν θέλετε να μεταφέρετε τα δικαιώματα του διαχειριστή σε άλλον χρήστη, πατήστε ΑΛΛΑΓΗ ΣΕ ΔΙΑΧΕΙΡΙΣΤΗ </h5></br>";
+echo "<b>ΠΡΟΣΟΧΗ:</b>Αν πατήσετε Αλλαγή ο χρήστης θα χάσετε τα δικαιώματα <b>για πάντα!!!!!!!!!!!!</b></br>";
+echo "</br>";
+echo "ΕΝΕΡΓΟΙ ΧΡΗΣΤΕΣ </br>";
 
-<form method="POST" action='insertStaff.php'>                            
-ΕΠΩΝΥΜΟ: <input type="text" name="fname">
-ΟΝΟΜΑ: <input type="text" name="lname">
-ΕΙΔΙΚΟΤΗΤΑ: <input type="text" name="specialty">
-<input type="submit" name="insert" value="ΕΙΣΑΓΩΓΗ" />
-</form>  
+$conn = getDbConnection();
+$admin = "SELECT `user_id`, `user_lastname`, `user_firstname` FROM `user` WHERE admin=0";
+$adminResult = $conn->query($admin);
 
+ if ($adminResult->num_rows > 0) {
+      // output data of each row
+    $table = "<table>%s</table>";
+    $rowAll = "";
+    while ($row = $adminResult->fetch_assoc()) {
+        $rowS = "<tr><td>%s</td>  <td>%s</td> <td><a href='EditAdmin.php?id=%s'>ΑΛΛΑΓΗ ΣΕ ΔΙΑΧΕΙΡΙΣΤΗ</a></td></tr> ";
+        $rowAll = $rowAll. sprintf($rowS,  $row['user_lastname'],$row['user_firstname'],strval($row['user_id']));
+    }
+    echo sprintf($table,$rowAll);
+}else {
+    echo "0 results";
+     }
+$conn->close();                        
+?>                               
+                            
 <!--===============footer=================================-->
 <footer>	
     <div class="hor bg3"></div>
@@ -124,8 +105,8 @@ require_once 'helpers/dbConnectioni.php';
             </div>
 	</div>  
 </footer>
-
-
+</div>
+</div>
 </body>
 </html>                                  
                             

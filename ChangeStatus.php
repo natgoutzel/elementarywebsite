@@ -57,9 +57,32 @@
 <div class="main">
 <!--==============================Content=================================-->
 <div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - December 16, 2013!</div>
-                            
-                            
-                            
+<?php
+require_once 'helpers/dbConnectioni.php';
+echo "<h4> ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ χρηστων </h4>";
+echo "<h5>Αν κάποιος χρήστης δεν είναι ενεργός πια, πατήστε ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ </h5></br>";
+echo "<b>ΠΡΟΣΟΧΗ:</b>Αν πατήσετε Απενεργοποίηση ο χρήστης θα απενεργοποιηθεί <b>για πάντα!!!!!!!!!!!!</b></br>";
+echo "</br>";
+echo "ΕΝΕΡΓΟΙ ΧΡΗΣΤΕΣ </br>";
+
+$conn = getDbConnection();
+$admin = "SELECT `user_id`, `user_lastname`, `user_firstname` FROM `user` WHERE status=1 AND admin=0";
+$adminResult = $conn->query($admin);
+
+ if ($adminResult->num_rows > 0) {
+      // output data of each row
+    $table = "<table>%s</table>";
+    $rowAll = "";
+    while ($row = $adminResult->fetch_assoc()) {
+        $rowS = "<tr><td>%s</td>  <td>%s</td> <td><a href='EditStatus.php?id=%s'>Απενεργοποίηση χρήστη</a></td></tr> ";
+        $rowAll = $rowAll. sprintf($rowS,  $row['user_lastname'],$row['user_firstname'],strval($row['user_id']));
+    }
+    echo sprintf($table,$rowAll);
+}else {
+    echo "0 results";
+     }
+$conn->close();                        
+?>                            
 <!--===============footer=================================-->
 <footer>	
     <div class="hor bg3"></div>
